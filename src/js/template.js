@@ -2,39 +2,28 @@
  * ZUI: $componentName$.js
  * http://zui.sexy
  * ========================================================================
- * Copyright (c) 2014-2016 cnezsoft.com; Licensed MIT
+ * Copyright (c) 2017-2018 cnezsoft.com; Licensed MIT
  * ======================================================================== */
 
 
 (function($) {
     'use strict';
 
-    var NAME = 'zui.$componentObject$'; // modal name
+    var NAME = 'zui.$componentObject$'; // model name
 
-    // The $componentName$ modal class
+    // The $componentName$ model class
     var $ComponentName$ = function(element, options) {
-        this.name = name;
-        this.$ = $(element);
+        var that = this;
+        that.name = NAME;
+        that.$ = $(element);
 
-        this.getOptions(options);
-        this.init();
+        options = that.options = $.extend({}, $ComponentName$.DEFAULTS, this.$.data(), options);
 
         // Initialize here
     };
 
     // default options
     $ComponentName$.DEFAULTS = {};
-
-    // Get and init options
-    $ComponentName$.prototype.getOptions = function(options) {
-        this.options = $.extend({}, $ComponentName$.DEFAULTS, this.$.data(), options);
-    };
-
-    // Call event helper
-    $ComponentName$.prototype.callEvent = function(name, params) {
-        var result = this.$.callEvent(name + '.' + this.name, params, this);
-        return !(result.result !== undefined && (!result.result));
-    };
 
     // Extense jquery element
     $.fn.$componentObject$ = function(option) {

@@ -2,6 +2,11 @@
 
 文件上传视图提供文件列表管理和文件批量上传功能，允许拖拽（需要 HTML5 支持）来添加上传文件，支持大文件分片上传，优先使用 HTML5 文件上传功能，旧的浏览器自动使用 Flash 和 Silverlight 的方式兼容，还可用轻松搭配七牛云存储 Javascript SDK 使用。该插件基于 <a href="http://www.plupload.com/" target="_blank">plupload</a> 开发。
 
+<div class="alert alert-warning">
+  <h4>兼容性提示</h4>
+  <p>文件上传视图不支持 IE9 以下的浏览器。</p>
+</div>
+
 ## 综合示例
 
 在下面的例子中点击 “选择文件” 按钮或者拖拽文件到页面指示区域来选择文件，点击 “开始上传” 按钮来批量上传文件到服务器。
@@ -209,7 +214,7 @@ var uploader = $('#myUploader').data('zui.uploader');
         <ul>
           <li>`mime_types`：用来设定允许上传的文件类型，该值为一个对象数组，每个对象包含 `title` 和 `extensions` 属性；</li>
           <li>`max_file_size`：最大允许上传的文件大小，例如 `1024`，单位为字节（b），也可用为一个字符串，包含数值或单位，例如 `128kb`；</li>
-          <li>`prevent_duplicates`：是否允许选取重复的文件，默认为 `false` 不允许，如果两个文件名和大小都相同则被认为是重复的文件；</li>
+          <li>`prevent_duplicates`：是否允许选取重复的文件，默认为 `true` 不允许，如果两个文件名和大小都相同则被认为是重复的文件；</li>
         </ul>
         <p>此选项的一个完整示例如下：</p>
         <pre><code>{
@@ -841,6 +846,17 @@ upload 对象实例上有如下方法：
 * `message`：要显示的消息文本；
 * `type`：消息类型，可选值包括 `'danger'`（危险消息，默认）、`'warning'`（警告）、`'info'`（一般），`'success'`（成功消息）。
 
+要启用显示消息功能，你必须在 `.upload` 元素内部提供 `.uploader-message` 元素。
+
+```html
+<div class="uploader">
+  <div class="uploader-message text-center">
+    <div class="content"></div>
+    <button type="button" class="close">×</button>
+  </div>
+</div>
+```
+
 ### <span class="code text-danger">hideMessage()</span>
 
 隐藏界面上的消息。
@@ -1069,6 +1085,39 @@ $('#myUploader').uploader({
 ### 在事件中访问 uploader 对象
 
 所有事件回调函数的 `this` 变量都为当前 `uploader` 实例对象。
+
+## 静态文件
+
+在初始化对时候使用 `staticFiles` 选项指定一个文件对象数组，可以实现在文件列表显示服务器中已存在对文件。
+
+<div class="example">
+  <div id="uploaderStaticFilesExample" class="uploader file-drag-area uploader-rename uploader-custom" data-drop-placeholder="将文件拖放至在此处。">
+    <div class="uploader-message text-center">
+      <div class="content"></div>
+      <button type="button" class="close">×</button>
+    </div>
+    <div class="uploader-files file-list file-list-lg file-rename-by-click" data-drag-placeholder="请拖拽文件到此处"></div>
+    <div class="uploader-actions">
+      <div class="uploader-status pull-right text-muted"></div>
+      <button type="button" class="btn btn-link uploader-btn-browse"><i class="icon icon-plus"></i> 选择文件</button>
+      <button type="button" class="btn btn-link uploader-btn-start"><i class="icon icon-cloud-upload"></i> 开始上传</button>
+    </div>
+  <div class="uploader-btn-browse uploader-btn-hidden" style="z-index: 1;"></div><div id="html5_1c2e40kps1grtfnu12e91e0r1nb77_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: -1px; left: -1px; width: 1px; height: 1px; overflow: hidden; z-index: 0;"><input id="html5_1c2e40kps1grtfnu12e91e0r1nb77" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept=""></div></div>
+</div>
+
+```js
+$('#uploaderStaticFilesExample').uploader({
+      chunk_size: '50kb',
+      url: 'http://your/post/url',
+      deleteActionOnDone: function(file, doRemoveFile) {
+          doRemoveFile();
+      },
+      staticFiles: [
+          {name: 'zui.js', size: 216159, url: 'http://zui.sexy'},
+          {name: 'zui.css', size: 106091}
+      ]
+  });
+```
 
 ## 自定义 UI
 
@@ -1591,9 +1640,21 @@ var plupload = uploader.plupload;
 
 <script>
 function afterPageLoad() {
-    $('.uploader').uploader({
+    $('.uploader:not(.uploader-custom)').uploader({
         chunk_size: '50kb',
         url: window.location.protocol + '//httpbin.org/post'
+    });
+
+    $('#uploaderStaticFilesExample').uploader({
+        chunk_size: '50kb',
+        url: window.location.protocol + '//httpbin.org/post',
+        deleteActionOnDone: function(file, doRemoveFile) {
+            doRemoveFile();
+        },
+        staticFiles: [
+            {name: 'zui.js', size: 216159, url: 'http://zui.sexy'},
+            {name: 'zui.css', size: 106091}
+        ]
     });
 }
 </script>

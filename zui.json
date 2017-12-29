@@ -81,6 +81,18 @@
       "source": "Moxie",
       "website": "http://www.plupload.com/"
     },
+    "mousewheel": {
+      "name": "jQuery Mousewheel",
+      "pver": "3.1.13",
+      "ver": "1.8.0",
+      "src": {
+        "js": ["assets/mousewheel/jquery.mousewheel.js"]
+      },
+      "license": "MIT",
+      "licenseFile": "https://github.com/jquery/jquery-mousewheel/blob/master/LICENSE.txt",
+      "source": "jQuery",
+      "website": "https://github.com/jquery/jquery-mousewheel"
+    },
     "jqueryex": {
       "name": "jQuery扩展",
       "ver": "1.0.0",
@@ -505,6 +517,14 @@
       "name": "消息框",
       "dpds": ["alerts.style", "alerts.basic", "alerts.inverse"]
     },
+    "inputcontrol": {
+      "name": "输入控件",
+      "ver": "1.7.0",
+      "src": {
+        "less": ["~/components/input-control.less"]
+      },
+      "dpds": ["basic", "forms.basic"]
+    },
     "inputgroups.basic": {
       "name": "基本输入框组",
       "src": {
@@ -547,6 +567,12 @@
     "forms": {
       "name": "表单",
       "dpds": ["forms.basic", "forms.condensed"]
+    },
+    "checkbox": {
+      "name": "复选框",
+      "src": {
+        "less": ["~/controls/checkbox.less"]
+      }
     },
     "switch": {
       "name": "开关",
@@ -591,9 +617,17 @@
       "ver": "1.0.0",
       "dpds": ["pager.basic"]
     },
+    "pager.js": {
+      "name": "分页器",
+      "src": {
+        "js": ["~/pager.js"]
+      },
+      "ver": "1.8.0",
+      "dpds": ["pager.basic"]
+    },
     "pager": {
       "name": "表单",
-      "dpds": ["pager.basic", "pager.size", "pager.types"]
+      "dpds": ["pager.basic", "pager.size", "pager.types", "pager.js"]
     },
     "navs.basic": {
       "name": "基本导航",
@@ -762,6 +796,14 @@
       "ver": "1.2.0",
       "require": ["jquery"]
     },
+    "searchbox": {
+      "name": "搜索框",
+      "src": {
+        "js": ["src/js/searchbox.js"]
+      },
+      "ver": "1.8.0",
+      "require": ["jquery"]
+    },
     "draggable": {
       "name": "拖拽",
       "src": {
@@ -853,6 +895,15 @@
       },
       "ver": "1.0.0",
       "source": "Bootstrap",
+      "dpds": ["basic", "animations"],
+      "require": ["jquery"]
+    },
+    "contextmenu": {
+      "name": "右键菜单",
+      "src": {
+        "js": ["src/js/contextmenu.js"]
+      },
+      "ver": "1.8.0",
       "dpds": ["basic", "animations"],
       "require": ["jquery"]
     },
@@ -1084,7 +1135,7 @@
       "ver": "1.3.0",
       "website": "http://www.chartjs.org/",
       "src": {
-        "js": ["src/js/Chart.Core.js", "src/js/Chart.Line.js", "src/js/Chart.Doughnut.js", "src/js/Chart.Bar.js"],
+        "js": ["src/js/Chart.Core.js", "src/js/chart.line.js", "src/js/Chart.Doughnut.js", "src/js/Chart.Bar.js"],
         "require": ["colorset.js", "jqueryex"]
       }
     },
@@ -1108,6 +1159,16 @@
       "dpds": ["jqueryex", "panels", "droppable"],
       "require": ["jquery"]
     },
+    "tabs": {
+      "name": "标签页管理器",
+      "src": {
+        "less": ["~/views/tabs.less"],
+        "js": ["src/js/tabs.js"]
+      },
+      "ver": "1.8.0",
+      "dpds": ["jqueryex", "resize", "string", "sortable"],
+      "require": ["jquery"]
+    },
     "datatable": {
       "name": "数据表格",
       "src": {
@@ -1116,6 +1177,17 @@
       },
       "ver": "1.2.0",
       "dpds": ["jqueryex", "resize", "string", "table", "store", "draggable"],
+      "require": ["jquery"]
+    },
+    "datagrid": {
+      "name": "数据表格②",
+      "src": {
+        "less": ["~/views/datagrid.less"],
+        "js": ["src/js/datagrid.js"]
+      },
+      "ver": "1.8.0",
+      "dpds": ["jqueryex", "mousewheel", "resize", "string", "store", "draggable"],
+      "libDpds": ["mousewheel"],
       "require": ["jquery"]
     },
     "calendar": {
@@ -1290,7 +1362,7 @@
       "filename": "zui",
       "subdirectories": true,
       "bootstrapStatement": true,
-      "includes": ["jqueryex", "basic", "utilities", "scaffolding", "grid", "typography", "header", "button", "progressbar", "image", "divider", "labels", "breadcrumbs", "icons", "forms", "switch", "close", "scrollbars", "table", "listgroup", "panels", "alerts", "inputgroups", "code", "pager", "navs", "navbars", "animations", "collapse", "device", "browser", "date", "string", "resize", "scrollspy", "store", "draggable", "droppable", "tab", "modals", "modaltrigger", "tooltip", "popovers", "dropdowns", "carousel", "lightbox", "messager", "menu", "article", "comment", "list", "card", "color", "tree"]
+      "includes": ["jqueryex", "basic", "utilities", "scaffolding", "grid", "typography", "header", "button", "progressbar", "image", "divider", "labels", "breadcrumbs", "icons", "forms", "switch", "checkbox", "close", "scrollbars", "table", "listgroup", "panels", "alerts", "inputcontrol", "inputgroups", "code", "pager", "navs", "navbars", "animations", "collapse", "device", "browser", "date", "string", "resize", "scrollspy", "store", "searchbox", "draggable", "droppable", "tab", "modals", "modaltrigger", "tooltip", "popovers", "dropdowns", "contextmenu", "carousel", "lightbox", "messager", "menu", "article", "comment", "list", "card", "color", "tree"]
     },
     "lite": {
       "title": "Lite edition",
@@ -1317,7 +1389,7 @@
     },
     "seperate": {
       "title": "Seperate bundles",
-      "bundles": ["jquery", "calendar", "kindeditor", "datetimepicker", "chosen", "chosenicons", "imgcutter", "datatable", "ieonly", "chart", "array", "hotkey", "board", "migrate1.2", "clipboard", "prettify", "sortable", "selectable", "colorpicker", "colorset.js", "imgready", "dashboard", "bootbox", "ueditor", "uploader", "treemap"]
+      "bundles": ["jquery", "calendar", "kindeditor", "datetimepicker", "chosen", "chosenicons", "imgcutter", "datatable", "datagrid", "ieonly", "chart", "array", "hotkey", "board", "tabs", "migrate1.2", "clipboard", "prettify", "sortable", "selectable", "colorpicker", "colorset.js", "imgready", "dashboard", "bootbox", "ueditor", "uploader", "treemap"]
     },
     "dist": {
       "title": "Dist bundles",

@@ -410,6 +410,10 @@
                 "name": "响应式设计 ",
                 "update": "1.5.0",
                 "topics": [{
+                    "name": "屏幕尺寸响应"
+                }, {
+                    "name": "设备类型和系统检测"
+                }, {
                     "name": "禁用响应式设计"
                 }],
                 "filter": "xiangyingshibuju xysbj"
@@ -709,6 +713,22 @@
                 }],
                 "filter": "daima dm"
             }, {
+                "desc": "带图标或标签的输入框",
+                "icon": "icon-pencil",
+                "id": "input-control",
+                "name": "输入框",
+                "version": "1.8.0",
+                "topics": [{
+                    "name": "带图标"
+                }, {
+                    "name": "带标签"
+                }, {
+                    "name": "搜索框"
+                }, {
+                    "name": "禁用"
+                }],
+                "filter": "shurukuang srk shrk"
+            }, {
                 "id": "inputgroup",
                 "icon": "icon-layout",
                 "desc": "多个输入单元格",
@@ -894,6 +914,22 @@
                     "name": "本地页面存储"
                 }],
                 "filter": "bendicunchu bdcc"
+            },{
+              "id": "searchbox",
+              "icon": "icon-search",
+              "desc": "创建丰富交互操作的搜索框",
+              "name": "搜索框",
+              "topics": [{
+                  "name": "实例"
+              }, {
+                  "name": "选项"
+              }, {
+                  "name": "方法"
+              }, {
+                  "name": "事件"
+              }],
+              "version": "1.8.0",
+              "filter": "sousuokuang ssk inputcontrol shurukuang shrk srk"
             }, {
                 "id": "modal",
                 "icon": "icon-check-empty",
@@ -1283,6 +1319,13 @@
                 }],
                 "filter": "shujubiaoge sjbg"
             }, {
+                "id": "datagrid",
+                "icon": "icon-th",
+                "desc": "功能强大的数据网格视图",
+                "name": "数据网格",
+                "version": "1.8.0",
+                "filter": "shujuwangge sjwg shjwg"
+            }, {
                 "id": "uploader",
                 "icon": "icon-cloud-upload",
                 "name": "文件上传",
@@ -1301,6 +1344,8 @@
                     "name": "方法"
                 }, {
                     "name": "事件"
+                }, {
+                    "name": "静态文件"
                 }, {
                     "name": "自定义 UI"
                 }, {
